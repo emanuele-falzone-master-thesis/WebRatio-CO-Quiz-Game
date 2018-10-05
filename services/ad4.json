@@ -1,0 +1,27 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf6",
+    "navTo" : "switch3",
+    "bindTo" : "switch3"
+  },
+  "outputPorts" : {
+    "success" : "spd4",
+    "error" : "epd4"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "switch3" : {
+      "success.true" : {
+        "id" : "sf7",
+        "navTo" : "spd4",
+        "bindTo" : "spd4"
+      },
+      "success.false" : {
+        "id" : "sf8",
+        "navTo" : "epd4",
+        "bindTo" : "epd4"
+      }
+    }
+  }
+}

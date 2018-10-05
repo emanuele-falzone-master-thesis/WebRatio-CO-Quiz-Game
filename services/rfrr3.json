@@ -1,0 +1,38 @@
+{
+  "service" : "wrm.comp.RestfulRequestResponseService",
+  "requestInputs" : [ {
+    "name" : "rrp2",
+    "path" : "language"
+  }, {
+    "name" : "rrp3",
+    "path" : "level"
+  }, {
+    "name" : "rrp4",
+    "path" : "oid"
+  } ],
+  "responseOutputs" : [ {
+    "name" : "rrsp3",
+    "path" : ""
+  }, {
+    "name" : "spf11",
+    "path" : "wrong"
+  }, {
+    "name" : "spf12",
+    "path" : "explaination"
+  }, {
+    "name" : "spf13",
+    "path" : "content"
+  }, {
+    "name" : "spf14",
+    "path" : "correct"
+  }, {
+    "name" : "spf15",
+    "path" : "oid"
+  } ],
+  "requestHeaderInputs" : [ ],
+  "responseHeaderOutputs" : [ ],
+  "method" : "GET",
+  "url" : "http://funergy.ifmledit.org/funergy/Services/ffv/getNextQuestion",
+  "responseType" : "json",
+  "timeout" : 0
+}

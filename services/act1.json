@@ -1,0 +1,26 @@
+{
+  "_" : "wrm.core.ActionService",
+  "definition" : "ad2",
+  "flows" : {
+    "spd2" : {
+      "id" : "nf2",
+      "navTo" : "scr2",
+      "bindTo" : "dau1",
+      "bind" : {
+        "kcond2.att4" : "pdp6"
+      }
+    },
+    "spd2*" : [ {
+      "bindTo" : "pwu1",
+      "bind" : {
+        "acond2" : "pdp3"
+      }
+    } ],
+    "epd2" : {
+      "id" : "nf3",
+      "navTo" : "scr1",
+      "bindTo" : "scr1"
+    }
+  },
+  "notifications" : { }
+}

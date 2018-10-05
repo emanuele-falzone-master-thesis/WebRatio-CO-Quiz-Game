@@ -1,0 +1,12 @@
+{
+  "service" : "wrm.comp.DeleteService",
+  "condExprs" : {
+    "property" : "att1",
+    "operator" : "!eq",
+    "value" : "-1",
+    "config" : {
+      "oneImpliedInputRequired" : false
+    }
+  },
+  "entity" : "cls1"
+}

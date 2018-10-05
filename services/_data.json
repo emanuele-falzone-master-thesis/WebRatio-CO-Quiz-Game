@@ -1,0 +1,134 @@
+{
+  "_" : "wrm.data.DataService",
+  "databaseName" : "FunergyJournal",
+  "contextName" : "ManagementContext",
+  "metadata" : {
+    "version" : 536834448,
+    "entities" : {
+      "MUser" : {
+        "name" : "data.AppUser",
+        "setName" : "data_AppUserSet",
+        "attributes" : {
+          "mUserOID" : {
+            "name" : "oid",
+            "type" : "integer",
+            "key" : true
+          },
+          "mUsername" : {
+            "name" : "username",
+            "type" : "string"
+          }
+        },
+        "roles" : {
+          "MUser2MRole" : {
+            "name" : "AppUserToAppRole",
+            "many" : true,
+            "inverse" : "MRole2MUser"
+          }
+        }
+      },
+      "MRole" : {
+        "name" : "data.AppRole",
+        "setName" : "data_AppRoleSet",
+        "attributes" : {
+          "mRoleOID" : {
+            "name" : "oid",
+            "type" : "integer",
+            "key" : true
+          },
+          "mRoleName" : {
+            "name" : "name",
+            "type" : "string"
+          }
+        },
+        "roles" : {
+          "MRole2MUser" : {
+            "name" : "AppRoleToAppUser",
+            "foreignKeyName" : "AppRoleToAppUser__oid",
+            "many" : false,
+            "inverse" : "MUser2MRole"
+          }
+        }
+      },
+      "cls8" : {
+        "name" : "data.Question",
+        "setName" : "data_QuestionSet",
+        "attributes" : {
+          "att4" : {
+            "name" : "oid",
+            "type" : "integer",
+            "key" : true
+          },
+          "att6" : {
+            "name" : "explanation",
+            "type" : "string"
+          },
+          "att7" : {
+            "name" : "language",
+            "type" : "string"
+          },
+          "att9" : {
+            "name" : "content",
+            "type" : "string"
+          },
+          "att10" : {
+            "name" : "questionId",
+            "type" : "integer"
+          }
+        },
+        "roles" : { }
+      },
+      "cls9" : {
+        "name" : "data.Answer",
+        "setName" : "data_AnswerSet",
+        "attributes" : {
+          "att11" : {
+            "name" : "oid",
+            "type" : "integer",
+            "key" : true
+          },
+          "att12" : {
+            "name" : "questionId",
+            "type" : "integer"
+          },
+          "att13" : {
+            "name" : "correctness",
+            "type" : "boolean"
+          },
+          "att14" : {
+            "name" : "content",
+            "type" : "string"
+          }
+        },
+        "roles" : { }
+      },
+      "cls1" : {
+        "name" : "data.Status",
+        "setName" : "data_StatusSet",
+        "attributes" : {
+          "att1" : {
+            "name" : "oid",
+            "type" : "integer",
+            "key" : true
+          },
+          "att2" : {
+            "name" : "questionId",
+            "type" : "integer"
+          },
+          "att3" : {
+            "name" : "level",
+            "type" : "integer"
+          }
+        },
+        "roles" : { }
+      }
+    },
+    "associations" : {
+      "MUser2MRole_MRole2MUser" : {
+        "name" : "appUserToAppRole_appRoleToAppUser",
+        "roles" : [ "MUser2MRole", "MRole2MUser" ]
+      }
+    }
+  },
+  "dataRestoreDisabled" : [ ]
+}

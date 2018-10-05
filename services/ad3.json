@@ -1,0 +1,124 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf45",
+    "navTo" : "act10",
+    "bindTo" : "act10"
+  },
+  "outputPorts" : {
+    "success" : "spd3",
+    "error" : "epd3"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "rfrr3" : {
+      "error" : {
+        "id" : "ef1",
+        "navTo" : "epd3",
+        "bindTo" : "epd3",
+        "bind" : {
+          "notificationMessage" : "errorMessage"
+        }
+      },
+      "*" : [ {
+        "bindTo" : "act12",
+        "bind" : {
+          "act12.pdp21" : "spf15"
+        }
+      }, {
+        "bindTo" : "spd3",
+        "bind" : {
+          "pdp5" : "spf15"
+        }
+      } ],
+      "success" : {
+        "id" : "sf48",
+        "navTo" : "act11",
+        "bindTo" : "act11",
+        "bind" : {
+          "act11.pdp12" : "spf13",
+          "act11.pdp17" : "spf14",
+          "act11.pdp13" : "spf12",
+          "act11.pdp14" : {
+            "k" : "en"
+          },
+          "act11.pdp15" : "spf15",
+          "act11.pdp16" : "spf11"
+        }
+      }
+    },
+    "act7" : {
+      "spd6" : {
+        "id" : "sf47",
+        "navTo" : "rfrr3",
+        "bindTo" : "rfrr3",
+        "bind" : {
+          "rrp2" : {
+            "k" : "en"
+          },
+          "rrp3" : "pdp1",
+          "rrp4" : "pdp2"
+        }
+      },
+      "epd6" : {
+        "id" : "ef22",
+        "navTo" : "epd3",
+        "bindTo" : "epd3",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    },
+    "act10" : {
+      "spd7" : {
+        "id" : "sf46",
+        "navTo" : "act7",
+        "bindTo" : "act7"
+      },
+      "epd7" : {
+        "id" : "ef21",
+        "navTo" : "epd3",
+        "bindTo" : "epd3",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    },
+    "act11" : {
+      "spd8" : {
+        "id" : "sf50",
+        "navTo" : "act12",
+        "bindTo" : "act12"
+      },
+      "spd8*" : [ {
+        "bindTo" : "spd3",
+        "bind" : {
+          "pdp4" : "pdp18"
+        }
+      } ],
+      "epd8" : {
+        "id" : "ef23",
+        "navTo" : "epd3",
+        "bindTo" : "epd3",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    },
+    "act12" : {
+      "spd10" : {
+        "id" : "sf51",
+        "navTo" : "spd3",
+        "bindTo" : "spd3"
+      },
+      "epd10" : {
+        "id" : "ef24",
+        "navTo" : "epd3",
+        "bindTo" : "epd3",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    }
+  }
+}

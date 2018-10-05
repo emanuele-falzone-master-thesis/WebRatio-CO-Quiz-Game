@@ -1,0 +1,39 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf19",
+    "navTo" : "dlu5",
+    "bindTo" : "dlu5"
+  },
+  "outputPorts" : {
+    "success" : "spd7",
+    "error" : "epd7"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "dlu3" : {
+      "success" : {
+        "id" : "sf25",
+        "navTo" : "spd7",
+        "bindTo" : "spd7"
+      },
+      "error" : {
+        "id" : "ef12",
+        "navTo" : "epd7",
+        "bindTo" : "epd7"
+      }
+    },
+    "dlu5" : {
+      "success" : {
+        "id" : "sf18",
+        "navTo" : "dlu3",
+        "bindTo" : "dlu3"
+      },
+      "error" : {
+        "id" : "ef10",
+        "navTo" : "epd7",
+        "bindTo" : "epd7"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "service" : "wrm.comp.SelectorService",
+  "entity" : "cls1",
+  "maxResults" : 1,
+  "distinct" : false,
+  "output" : [ {
+    "ref" : "att2",
+    "viewName" : "questionId",
+    "bindName" : "att2"
+  }, {
+    "ref" : "att1",
+    "viewName" : "oid",
+    "bindName" : "att1"
+  }, {
+    "ref" : "att3",
+    "viewName" : "level",
+    "bindName" : "att3"
+  } ],
+  "order" : [ ]
+}

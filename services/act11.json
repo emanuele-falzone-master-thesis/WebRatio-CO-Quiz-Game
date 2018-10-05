@@ -1,0 +1,13 @@
+{
+  "_" : "wrm.core.ActionService",
+  "definition" : "ad8",
+  "flows" : {
+    "spd8*" : [ {
+      "bindTo" : "spd3",
+      "bind" : {
+        "pdp4" : "pdp18"
+      }
+    } ]
+  },
+  "notifications" : { }
+}

@@ -1,0 +1,82 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf34",
+    "navTo" : "cru4",
+    "bindTo" : "cru4",
+    "bind" : {
+      "att9" : "pdp12",
+      "att6" : "pdp13",
+      "att7" : "pdp14",
+      "att10" : "pdp15"
+    }
+  },
+  "input*" : [ {
+    "bindTo" : "cru8",
+    "bind" : {
+      "att14" : "pdp17",
+      "att13" : {
+        "k" : "true"
+      },
+      "att12" : "pdp15"
+    }
+  }, {
+    "bindTo" : "cru7",
+    "bind" : {
+      "att14" : "pdp16",
+      "att13" : {
+        "k" : "false"
+      },
+      "att12" : "pdp15"
+    }
+  } ],
+  "outputPorts" : {
+    "success" : "spd8",
+    "error" : "epd8"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "cru4" : {
+      "success" : {
+        "id" : "sf26",
+        "navTo" : "cru8",
+        "bindTo" : "cru8"
+      },
+      "*" : [ {
+        "bindTo" : "spd8",
+        "bind" : {
+          "pdp18" : "att4"
+        }
+      } ],
+      "error" : {
+        "id" : "ef13",
+        "navTo" : "epd8",
+        "bindTo" : "epd8"
+      }
+    },
+    "cru7" : {
+      "success" : {
+        "id" : "sf35",
+        "navTo" : "spd8",
+        "bindTo" : "spd8"
+      },
+      "error" : {
+        "id" : "ef15",
+        "navTo" : "epd8",
+        "bindTo" : "epd8"
+      }
+    },
+    "cru8" : {
+      "success" : {
+        "id" : "sf33",
+        "navTo" : "cru7",
+        "bindTo" : "cru7"
+      },
+      "error" : {
+        "id" : "ef14",
+        "navTo" : "epd8",
+        "bindTo" : "epd8"
+      }
+    }
+  }
+}

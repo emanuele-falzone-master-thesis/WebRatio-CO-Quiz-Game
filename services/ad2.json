@@ -1,0 +1,51 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf3",
+    "navTo" : "brcd1",
+    "bindTo" : "brcd1"
+  },
+  "outputPorts" : {
+    "success" : "spd2",
+    "error" : "epd2"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "brcd1" : {
+      "success" : {
+        "id" : "sf4",
+        "navTo" : "act2",
+        "bindTo" : "act2"
+      },
+      "error" : {
+        "id" : "ef2",
+        "navTo" : "epd2",
+        "bindTo" : "epd2"
+      },
+      "success.Cancel" : {
+        "id" : "sf53",
+        "navTo" : "epd2",
+        "bindTo" : "epd2"
+      }
+    },
+    "act2" : {
+      "spd3" : {
+        "id" : "sf5",
+        "navTo" : "spd2",
+        "bindTo" : "spd2",
+        "bind" : {
+          "pdp3" : "pdp5",
+          "pdp6" : "pdp4"
+        }
+      },
+      "epd3" : {
+        "id" : "ef3",
+        "navTo" : "epd2",
+        "bindTo" : "epd2",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    }
+  }
+}

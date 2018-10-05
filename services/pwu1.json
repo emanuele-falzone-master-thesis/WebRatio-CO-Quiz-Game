@@ -1,0 +1,34 @@
+{
+  "service" : "wrm.comp.ListService",
+  "entity" : "cls9",
+  "maxResults" : 0,
+  "condExprs" : {
+    "property" : "att12",
+    "operator" : "eq",
+    "valueInput" : "acond2",
+    "config" : {
+      "oneImpliedInputRequired" : false
+    }
+  },
+  "distinct" : false,
+  "output" : [ {
+    "ref" : "att14",
+    "viewName" : "content",
+    "bindName" : "att14"
+  }, {
+    "ref" : "att13",
+    "viewName" : "correctness",
+    "bindName" : "att13"
+  } ],
+  "order" : [ {
+    "property" : "att14",
+    "reverse" : false
+  } ],
+  "_form" : {
+    "_" : "wrm.form.DefaultFormSubService",
+    "formLabel" : "Answers",
+    "properties" : {
+      "checkedKeys" : { }
+    }
+  }
+}

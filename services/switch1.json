@@ -1,0 +1,4 @@
+{
+  "service" : "wrm.comp.SwitchService",
+  "codes" : [ "0", "1" ]
+}

@@ -1,0 +1,82 @@
+{
+  "_" : "wrm.core.PanelService",
+  "navigations" : {
+    "0" : {
+      "nc" : true,
+      "flows" : "scr1",
+      "fr" : true
+    },
+    "1" : {
+      "nc" : true,
+      "flows" : "scr1.link",
+      "fr" : true
+    },
+    "2" : {
+      "flows" : "scr1.auto-link",
+      "fr" : true
+    },
+    "3" : {
+      "flows" : "scr1.auto-link"
+    },
+    "4" : {
+      "flows" : "nf1|nf3",
+      "effects" : "#pr#"
+    },
+    "5" : {
+      "flows" : "nf4",
+      "fr" : true
+    },
+    "6" : {
+      "flows" : "nf4"
+    },
+    "7" : {
+      "flows" : "nf8",
+      "fr" : true
+    },
+    "8" : {
+      "flows" : "nf8"
+    },
+    "9" : {
+      "flows" : "nf9",
+      "fr" : true
+    },
+    "10" : {
+      "flows" : "nf9"
+    }
+  },
+  "knownEffects" : "#pr#",
+  "propagationSequence" : "",
+  "propagations" : { },
+  "components" : {
+    "gctu1" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "navs" : "3|4",
+        "effects" : "#pr#"
+      }, {
+        "fr" : false,
+        "navs" : "4",
+        "effects" : "-"
+      } ]
+    }
+  },
+  "events" : {
+    "oslte1" : {
+      "component" : "gctu1",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf1",
+        "navTo" : "act1",
+        "bindTo" : "act1",
+        "preserve" : ""
+      }
+    }
+  },
+  "autoFlow" : {
+    "preserve" : ""
+  },
+  "autoFlowFull" : {
+    "preserve" : ""
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "service" : "wrm.comp.UpdateService",
+  "entity" : "cls1",
+  "condExprs" : {
+    "property" : "att1",
+    "operator" : "in",
+    "valueInput" : "kcond1.att1",
+    "config" : {
+      "oneImpliedInputRequired" : false
+    }
+  },
+  "bulk" : false
+}

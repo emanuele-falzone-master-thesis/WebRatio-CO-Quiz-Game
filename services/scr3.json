@@ -1,0 +1,99 @@
+{
+  "_" : "wrm.core.PanelService",
+  "navigations" : {
+    "0" : {
+      "nc" : true,
+      "flows" : "scr3",
+      "fr" : true
+    },
+    "1" : {
+      "nc" : true,
+      "flows" : "scr3.link",
+      "fr" : true
+    },
+    "2" : {
+      "flows" : "scr3.auto-link",
+      "fr" : true
+    },
+    "3" : {
+      "flows" : "scr3.auto-link"
+    },
+    "4" : {
+      "flows" : "nf5|nf10",
+      "fr" : true
+    },
+    "5" : {
+      "flows" : "nf5|nf10"
+    },
+    "6" : {
+      "flows" : "nf5|nf7",
+      "fr" : true
+    },
+    "7" : {
+      "flows" : "nf5|nf7"
+    }
+  },
+  "knownEffects" : "#pr#",
+  "propagationSequence" : "",
+  "propagations" : { },
+  "components" : {
+    "mssu2" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "effects" : "#pr#"
+      }, {
+        "fr" : false,
+        "navs" : "5|7",
+        "effects" : "-"
+      } ]
+    },
+    "gctu2" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "navs" : "3",
+        "effects" : "#pr#"
+      } ]
+    },
+    "mssu1" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "effects" : "#pr#"
+      }, {
+        "fr" : false,
+        "navs" : "5|7",
+        "effects" : "-"
+      } ]
+    }
+  },
+  "events" : {
+    "oslte3" : {
+      "component" : "gctu2",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf8",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : ""
+      }
+    },
+    "bke3" : {
+      "generic" : true,
+      "type" : "BackEvent",
+      "flow" : {
+        "id" : "nf9",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : ""
+      }
+    }
+  },
+  "autoFlow" : {
+    "preserve" : "mssu2:messages|mssu1:messages"
+  },
+  "autoFlowFull" : {
+    "preserve" : "mssu2:messages|mssu1:messages"
+  }
+}
