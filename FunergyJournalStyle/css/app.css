@@ -113,9 +113,25 @@
     padding: 5%;
 }
 
-
 .quit {
-    width: 100%;
     background-color:  #588f3e;
     color: white;
+}
+
+.entire {
+    width: 100%;
+}
+
+.half {
+    width: 48%;
+}
+
+.expl {
+    height: 80%;
+}
+
+.expl div, .expl h2 {
+    background-color: transparent;
+    border: 0;
+    color: black;
 }
