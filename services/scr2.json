@@ -27,8 +27,16 @@
     }
   },
   "knownEffects" : "#pr#",
-  "propagationSequence" : "",
-  "propagations" : { },
+  "propagationSequence" : "df2d",
+  "propagations" : {
+    "df2d" : {
+      "bindTo" : "act3",
+      "bindFrom" : "dau1",
+      "pass" : {
+        "par2d" : "data.att4"
+      }
+    }
+  },
   "components" : {
     "dau1" : {
       "fb" : false,
@@ -75,11 +83,12 @@
         "id" : "nf5",
         "navTo" : "act3",
         "bindTo" : "act3",
-        "preserve" : "",
+        "preserve" : "par2d",
         "bind" : {
           "act3.pdp7" : "data.att13"
         }
-      }
+      },
+      "secondaryFlows" : "df2d"
     },
     "bke2" : {
       "generic" : true,
@@ -93,9 +102,9 @@
     }
   },
   "autoFlow" : {
-    "preserve" : "pwu1:acond2|dau1:kcond2.att4"
+    "preserve" : "dau1:kcond2.att4|pwu1:acond2"
   },
   "autoFlowFull" : {
-    "preserve" : "pwu1:acond2|dau1:kcond2.att4"
+    "preserve" : "dau1:kcond2.att4|pwu1:acond2"
   }
 }

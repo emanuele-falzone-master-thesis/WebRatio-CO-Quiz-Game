@@ -19,6 +19,13 @@
           "k" : "boy-correct.png"
         }
       }
+    }, {
+      "bindTo" : "gctu2",
+      "pass" : {
+        "par4d" : {
+          "p" : "par2d"
+        }
+      }
     } ],
     "epd4" : {
       "id" : "nf7",
@@ -35,6 +42,13 @@
       "bind" : {
         "messages" : {
           "k" : "boy-wrong.png"
+        }
+      }
+    }, {
+      "bindTo" : "gctu2",
+      "pass" : {
+        "par3d" : {
+          "p" : "par2d"
         }
       }
     } ]

@@ -76,7 +76,22 @@
         "id" : "nf8",
         "navTo" : "scr1",
         "bindTo" : "scr1",
-        "preserve" : ""
+        "preserve" : "par3d|par4d"
+      }
+    },
+    "oslte1d" : {
+      "component" : "gctu2",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf1d",
+        "navTo" : "scr1d",
+        "bindTo" : "dau1d",
+        "preserve" : "par3d|par4d",
+        "bind" : {
+          "kcond1d.att4" : {
+            "p" : "par4d"
+          }
+        }
       }
     },
     "bke3" : {
@@ -91,9 +106,9 @@
     }
   },
   "autoFlow" : {
-    "preserve" : "mssu2:messages|mssu1:messages"
+    "preserve" : "mssu1:messages|mssu2:messages"
   },
   "autoFlowFull" : {
-    "preserve" : "mssu2:messages|mssu1:messages"
+    "preserve" : "mssu1:messages|mssu2:messages"
   }
 }

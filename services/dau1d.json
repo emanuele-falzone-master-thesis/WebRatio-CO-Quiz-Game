@@ -4,18 +4,14 @@
   "condExprs" : {
     "property" : "att4",
     "operator" : "in",
-    "valueInput" : "kcond2.att4",
+    "valueInput" : "kcond1d.att4",
     "config" : {
       "oneImpliedInputRequired" : false
     }
   },
   "output" : [ {
-    "ref" : "att9",
-    "viewName" : "content",
-    "bindName" : "att9"
-  }, {
-    "ref" : "att4",
-    "viewName" : "oid",
-    "bindName" : "att4"
+    "ref" : "att6",
+    "viewName" : "explanation",
+    "bindName" : "att6"
   } ]
 }

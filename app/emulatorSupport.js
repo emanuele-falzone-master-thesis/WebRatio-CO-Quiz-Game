@@ -629,6 +629,10 @@ wrx.EmulatorSupport = (function() {
     "scr2" : {
       "name" : "Decode A Card",
       "setNames" : [ ]
+    },
+    "scr1d" : {
+      "name" : "Explanation",
+      "setNames" : [ ]
     }
   },
   "locales" : {

@@ -23,24 +23,38 @@
       "effects" : "#pr#"
     },
     "5" : {
-      "flows" : "nf4",
+      "flows" : "nf2d",
       "fr" : true
     },
     "6" : {
-      "flows" : "nf4"
+      "flows" : "nf2d"
     },
     "7" : {
-      "flows" : "nf8",
+      "flows" : "nf3d",
       "fr" : true
     },
     "8" : {
-      "flows" : "nf8"
+      "flows" : "nf3d"
     },
     "9" : {
-      "flows" : "nf9",
+      "flows" : "nf4",
       "fr" : true
     },
     "10" : {
+      "flows" : "nf4"
+    },
+    "11" : {
+      "flows" : "nf8",
+      "fr" : true
+    },
+    "12" : {
+      "flows" : "nf8"
+    },
+    "13" : {
+      "flows" : "nf9",
+      "fr" : true
+    },
+    "14" : {
       "flows" : "nf9"
     }
   },
