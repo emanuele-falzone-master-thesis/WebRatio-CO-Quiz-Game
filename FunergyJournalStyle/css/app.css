@@ -1,0 +1,137 @@
+.home {
+    display: block;
+    height: 100%;
+    background-image: url("../images/logo-full.png"), url("../images/home-backgroud.jpg");
+    background-size: 80%, 100%;
+    background-repeat: no-repeat;
+    background-position: center 5%, center bottom;
+}
+
+.v-flex {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 5%;
+}
+
+.actions {
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border-style: solid;
+    font-weight: 900;
+    background-color: #e2ecbb;
+    color: #588f3e;
+    border-color: white;
+}
+
+.question {
+    padding: 5%;
+    display: block;
+    height: 100%;
+    background-image:  url("../images/answer-background.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.padded {
+    padding: 5%;
+}
+
+.padded > div {
+    display: block;
+    height: 100%;
+}
+
+.card {
+    border-radius: 10px;
+    height: 20%;
+}
+
+.dark-green {
+    background-color: #588f3e;
+}
+
+.item h2 {
+    white-space: normal;
+    text-align: center;
+    color: white;
+}
+
+.answer {
+    border-radius: 10px;
+    background-color: #588f3e;
+    margin-bottom: 3%;
+}
+
+.prova{
+    background-image:  url("../images/boy-correct.jpg"), url("../images/boy-wrong.jpg");
+}
+
+.image {
+    height: 50%;
+}
+
+.image div {
+    height: 100%;
+    background-color: transparent;
+    padding: 0%;
+}
+
+.boy {
+    background-position: center bottom;
+    background-size: 100%;
+    border-radius: 10px;
+    border: 2px solid;
+}
+
+.message {
+    height: 30%;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.message > div {
+    height: 100%;
+    line-height: 90px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: beige;
+    border: 0;
+}
+
+.message > div div {
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+}
+
+.button-quit {
+    height: 20%;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    background-color: beige;
+    padding: 5%;
+}
+
+.quit {
+    background-color:  #588f3e;
+    color: white;
+}
+
+.entire {
+    width: 100%;
+}
+
+.half {
+    width: 48%;
+}
+
+.expl {
+    height: 80%;
+}
+
+.expl div, .expl h2 {
+    background-color: transparent;
+    border: 0;
+    color: black;
+}
