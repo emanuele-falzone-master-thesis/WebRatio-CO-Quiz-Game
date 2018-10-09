@@ -78,6 +78,9 @@ $data.Entity.extend("data.Status", {
 	},
 	level: {
 		type: "integer"
+	},
+	language: {
+		type: "string"
 	}
 });
 

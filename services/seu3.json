@@ -4,6 +4,10 @@
   "maxResults" : 1,
   "distinct" : false,
   "output" : [ {
+    "ref" : "att1d",
+    "viewName" : "language",
+    "bindName" : "att1d"
+  }, {
     "ref" : "att2",
     "viewName" : "questionId",
     "bindName" : "att2"

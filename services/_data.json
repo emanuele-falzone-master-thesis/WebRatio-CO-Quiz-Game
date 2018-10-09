@@ -3,7 +3,7 @@
   "databaseName" : "FunergyJournal",
   "contextName" : "ManagementContext",
   "metadata" : {
-    "version" : 537190774,
+    "version" : 537202653,
     "entities" : {
       "MUser" : {
         "name" : "data.AppUser",
@@ -118,6 +118,10 @@
           "att3" : {
             "name" : "level",
             "type" : "integer"
+          },
+          "att1d" : {
+            "name" : "language",
+            "type" : "string"
           }
         },
         "roles" : { }

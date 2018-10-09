@@ -19,37 +19,18 @@
       "flows" : "scr2d.auto-link"
     },
     "4" : {
-      "flows" : "nf4d|nf5d",
+      "flows" : "nf5d|nf7d",
       "fr" : true
     },
     "5" : {
-      "flows" : "nf4d|nf5d"
+      "flows" : "nf5d|nf7d"
     }
   },
   "knownEffects" : "#pr#",
-  "propagationSequence" : "df9d",
-  "propagations" : {
-    "df9d" : {
-      "bindTo" : "act2d",
-      "bindFrom" : "dau2d",
-      "pass" : {
-        "par12d" : "data.att4"
-      }
-    }
-  },
+  "propagationSequence" : "",
+  "propagations" : { },
   "components" : {
-    "dau2d" : {
-      "fb" : false,
-      "conds" : [ {
-        "fr" : false,
-        "navs" : "5",
-        "effects" : "-"
-      }, {
-        "fr" : false,
-        "effects" : "#pr#"
-      } ]
-    },
-    "pwu1d" : {
+    "enu1d" : {
       "fb" : true,
       "conds" : [ {
         "fr" : false,
@@ -63,11 +44,11 @@
         "all" : true,
         "fr" : true,
         "navs" : "4",
-        "inputs" : "pwu1d:acond1d"
+        "inputs" : "enu1d:sfld1d_presel"
       }, {
         "all" : true,
         "navs" : "5",
-        "inputs" : "pwu1d:acond1d"
+        "inputs" : "enu1d:sfld1d_presel"
       }, {
         "all" : true,
         "fr" : true,
@@ -77,34 +58,23 @@
   },
   "events" : {
     "oslte5d" : {
-      "component" : "pwu1d",
+      "component" : "enu1d",
       "type" : "OnSelectEvent",
       "flow" : {
-        "id" : "nf7d",
-        "navTo" : "act2d",
-        "bindTo" : "act2d",
-        "preserve" : "par12d",
+        "id" : "nf9d",
+        "navTo" : "act5d",
+        "bindTo" : "act5d",
+        "preserve" : "",
         "bind" : {
-          "act2d.pdp7" : "data.att13"
+          "act5d.pdp3d" : "sfld1d"
         }
-      },
-      "secondaryFlows" : "df9d"
-    },
-    "bke2d" : {
-      "generic" : true,
-      "type" : "BackEvent",
-      "flow" : {
-        "id" : "nf10d",
-        "navTo" : "scr1",
-        "bindTo" : "scr1",
-        "preserve" : ""
       }
     }
   },
   "autoFlow" : {
-    "preserve" : "dau2d:kcond2d.att4|pwu1d:acond1d"
+    "preserve" : ""
   },
   "autoFlowFull" : {
-    "preserve" : "dau2d:kcond2d.att4|pwu1d:acond1d"
+    "preserve" : ""
   }
 }

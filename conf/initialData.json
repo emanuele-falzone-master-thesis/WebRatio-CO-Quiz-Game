@@ -70,26 +70,32 @@
   "data.Status" : [ {
     "oid" : 1,
     "questionId" : 1,
-    "level" : 1
+    "level" : 1,
+    "language" : "Status language 1"
   }, {
     "oid" : 2,
     "questionId" : 2,
-    "level" : 2
+    "level" : 2,
+    "language" : "Status language 2"
   }, {
     "oid" : 3,
     "questionId" : 3,
-    "level" : 3
+    "level" : 3,
+    "language" : "Status language 3"
   }, {
     "oid" : 4,
     "questionId" : 4,
-    "level" : 4
+    "level" : 4,
+    "language" : "Status language 4"
   }, {
     "oid" : 5,
     "questionId" : 5,
-    "level" : 5
+    "level" : 5,
+    "language" : "Status language 5"
   }, {
     "oid" : 6,
     "questionId" : 6,
-    "level" : 6
+    "level" : 6,
+    "language" : "Status language 6"
   } ]
 }

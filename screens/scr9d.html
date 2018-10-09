@@ -1,10 +1,10 @@
 <!-- directive: wr-screen scr9d -->
-<div class="question">
-	<ion-content class=" padded wr-safe-area">
+<div>
+	<ion-content class=" wr-safe-area">
 		<!-- directive: wr-component dau6d -->
 		<div class=" wr-comp-Details">
 			<div ng-if="view.data" class="list card">
-				<div class="dark-green item ">
+				<div class="item ">
 					<h2>{{ view.data.content }}</h2>
 				</div>
 			</div>
@@ -12,8 +12,9 @@
 		<!-- end_directive: wr-component --><!-- directive: wr-component pwu3d -->
 		<div class=" wr-comp-List">
 			<div ng-if="view.data &amp;&amp; view.data.length" class="list ">
-				<div class="item answer " ng-repeat="current in view.data" ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte10d', { position: $index })">
+				<div class="item item-icon-right" ng-repeat="current in view.data" ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte10d', { position: $index })">
 					<h2>{{ current.content }}</h2>
+					<span class="icon ion-chevron-right"></span>
 				</div>
 			</div>
 		</div>

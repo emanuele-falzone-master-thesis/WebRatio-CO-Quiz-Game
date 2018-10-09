@@ -1,25 +1,29 @@
 <!-- directive: wr-screen scr2d -->
 <div>
 	<ion-content class=" wr-safe-area">
-		<!-- directive: wr-component dau2d -->
-		<div class=" wr-comp-Details">
-			<div ng-if="view.data" class="list card">
-				<div class="item item-divider">{{ 'Question' | wrLocalize }}</div>
-				<div class="item ">
-					<h2>{{ view.data.content }}</h2>
+		<!-- directive: wr-component enu1d -->
+		<form class=" wr-comp-Form list ">
+			<label class="item item-input item-select" ng-class="{ 'has-errors' : view.formState.sfld1d.invalid }">
+				<span class="input-label" ng-class="{ 'has-errors' : view.formState.sfld1d.invalid }">
+				{{ 'language' | wrLocalize }}
+				</span>
+				<div class="wr-input-wrapper">
+					<select ng-model="view.form.sfld1d" wr-form-property ng-options="opt as opt.label for opt in view.options.sfld1d">
+						<option value="">No selection</option>
+					</select>
+					<ul class="wr-error-list" ng-if="view.formState.sfld1d.errors.length">
+						<li ng-repeat="error in view.formState.sfld1d.errors track by $index">
+							{{ error }}
+						</li>
+					</ul>
 				</div>
+			</label>
+			<div class="item-buttons">    
+				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte5d', { position: $index })">
+				{{ 'Save' | wrLocalize }}
+				</button>
 			</div>
-		</div>
-		<!-- end_directive: wr-component --><!-- directive: wr-component pwu1d -->
-		<div class=" wr-comp-List">
-			<div ng-if="view.data &amp;&amp; view.data.length" class="list ">
-				<div class="item item-divider">{{ 'Answers' | wrLocalize }}</div>
-				<div class="item item-icon-right" ng-repeat="current in view.data" ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte5d', { position: $index })">
-					<h2>{{ current.content }}</h2>
-					<span class="icon ion-chevron-right"></span>
-				</div>
-			</div>
-		</div>
+		</form>
 		<!-- end_directive: wr-component -->
 	</ion-content>
 </div>

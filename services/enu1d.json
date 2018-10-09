@@ -1,0 +1,29 @@
+{
+  "service" : "wrm.comp.FormService",
+  "fields" : [ {
+    "id" : "sfld1d",
+    "fieldType" : "SelectionField",
+    "type" : "string",
+    "preselectValue" : "",
+    "splitOutput" : false,
+    "labelSlots" : [ {
+      "id" : "slot3d",
+      "value" : "English|Italian"
+    } ],
+    "outputSlots" : [ {
+      "id" : "slot4d",
+      "value" : "en|it"
+    } ]
+  } ],
+  "_form" : {
+    "_" : "wrm.form.DefaultFormSubService",
+    "formLabel" : "Language",
+    "viewFormRef" : "form",
+    "properties" : {
+      "sfld1d" : {
+        "type" : "string",
+        "label" : "language"
+      }
+    }
+  }
+}

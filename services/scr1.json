@@ -101,18 +101,40 @@
       "effects" : "#pr#"
     },
     "26" : {
+      "flows" : "nf5d|nf10d",
+      "effects" : "#pr#"
+    },
+    "27" : {
       "flows" : "nf8",
       "fr" : true
     },
-    "27" : {
+    "28" : {
       "flows" : "nf8"
     },
-    "28" : {
+    "29" : {
       "flows" : "nf9",
       "fr" : true
     },
-    "29" : {
+    "30" : {
       "flows" : "nf9"
+    },
+    "31" : {
+      "flows" : "nf9d|nf11d",
+      "fr" : true,
+      "effects" : "#pr#"
+    },
+    "32" : {
+      "flows" : "nf9d|nf11d",
+      "effects" : "#pr#"
+    },
+    "33" : {
+      "flows" : "nf9d|nf8d",
+      "fr" : true,
+      "effects" : "#pr#"
+    },
+    "34" : {
+      "flows" : "nf9d|nf8d",
+      "effects" : "#pr#"
     }
   },
   "knownEffects" : "#pr#",
@@ -123,11 +145,11 @@
       "fb" : false,
       "conds" : [ {
         "fr" : false,
-        "navs" : "25|3|4|18|20",
+        "navs" : "34|25|3|4|26|18|20|32",
         "effects" : "#pr#"
       }, {
         "fr" : false,
-        "navs" : "25|4|18|20",
+        "navs" : "34|25|4|26|18|20|32",
         "effects" : "-"
       } ]
     }
@@ -150,6 +172,16 @@
         "id" : "nf4d",
         "navTo" : "act1d",
         "bindTo" : "act1d",
+        "preserve" : ""
+      }
+    },
+    "oslte4d" : {
+      "component" : "gctu1",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf5d",
+        "navTo" : "act3d",
+        "bindTo" : "act3d",
         "preserve" : ""
       }
     }

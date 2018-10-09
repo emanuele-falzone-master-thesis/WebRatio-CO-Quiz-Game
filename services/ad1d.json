@@ -1,0 +1,69 @@
+{
+  "_" : "wrm.core.ActionDefService",
+  "input" : {
+    "id" : "sf1d",
+    "navTo" : "act2d",
+    "bindTo" : "act2d"
+  },
+  "input*" : [ {
+    "bindTo" : "mfu1d",
+    "bind" : {
+      "att1d" : "pdp3d"
+    }
+  }, {
+    "bindTo" : "chnglcl1d",
+    "bind" : {
+      "countryISO" : "pdp3d",
+      "languageISO" : "pdp3d"
+    }
+  } ],
+  "outputPorts" : {
+    "success" : "spd1d",
+    "error" : "epd1d"
+  },
+  "outputNotifications" : { },
+  "components" : {
+    "mfu1d" : {
+      "success" : {
+        "id" : "sf3d",
+        "navTo" : "chnglcl1d",
+        "bindTo" : "chnglcl1d"
+      },
+      "error" : {
+        "id" : "ef2d",
+        "navTo" : "epd1d",
+        "bindTo" : "epd1d"
+      }
+    },
+    "chnglcl1d" : {
+      "success" : {
+        "id" : "sf4d",
+        "navTo" : "spd1d",
+        "bindTo" : "spd1d"
+      },
+      "error" : {
+        "id" : "ef3d",
+        "navTo" : "epd1d",
+        "bindTo" : "epd1d"
+      }
+    },
+    "act2d" : {
+      "spd6" : {
+        "id" : "sf2d",
+        "navTo" : "mfu1d",
+        "bindTo" : "mfu1d",
+        "bind" : {
+          "kcond2d.att1" : "pdp19"
+        }
+      },
+      "epd6" : {
+        "id" : "ef1d",
+        "navTo" : "epd1d",
+        "bindTo" : "epd1d",
+        "bind" : {
+          "notificationMessage" : "notificationMessage"
+        }
+      }
+    }
+  }
+}

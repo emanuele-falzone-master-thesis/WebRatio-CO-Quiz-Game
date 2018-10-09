@@ -53,9 +53,7 @@
         "navTo" : "rfrr3",
         "bindTo" : "rfrr3",
         "bind" : {
-          "rrp2" : {
-            "k" : "en"
-          },
+          "rrp2" : "pdp2d",
           "rrp3" : "pdp1",
           "rrp4" : "pdp2"
         }

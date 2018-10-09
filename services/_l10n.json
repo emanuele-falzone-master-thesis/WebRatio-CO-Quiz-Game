@@ -4,6 +4,9 @@
   "locales" : {
     "en" : {
       "patterns" : { }
+    },
+    "it_IT" : {
+      "patterns" : { }
     }
   }
 }

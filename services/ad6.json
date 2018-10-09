@@ -19,7 +19,8 @@
         "bind" : {
           "pdp1" : "data.att3",
           "pdp2" : "data.att2",
-          "pdp19" : "data.att1"
+          "pdp19" : "data.att1",
+          "pdp2d" : "data.att1d"
         }
       },
       "error" : {

@@ -77,6 +77,8 @@
 		
 			modules.push("mobileDefault.ionicExtension");
 		
+			modules.push("mobileDefault.select");
+		
 			modules.push("angularExtension");
 		
 		angular.bootstrap(document, modules);

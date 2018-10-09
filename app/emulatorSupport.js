@@ -622,7 +622,19 @@ wrx.EmulatorSupport = (function() {
       "name" : "Home",
       "setNames" : [ ]
     },
+    "scr9d" : {
+      "name" : "Single Player",
+      "setNames" : [ ]
+    },
     "scr3" : {
+      "name" : "Results",
+      "setNames" : [ ]
+    },
+    "scr10d" : {
+      "name" : "Explanation",
+      "setNames" : [ ]
+    },
+    "scr8d" : {
       "name" : "Results",
       "setNames" : [ ]
     },
@@ -634,22 +646,18 @@ wrx.EmulatorSupport = (function() {
       "name" : "Decode A Card",
       "setNames" : [ ]
     },
-    "scr8d" : {
-      "name" : "Results",
-      "setNames" : [ ]
-    },
-    "scr9d" : {
-      "name" : "Single Player",
-      "setNames" : [ ]
-    },
-    "scr10d" : {
-      "name" : "Explanation",
+    "scr2d" : {
+      "name" : "Settings",
       "setNames" : [ ]
     }
   },
   "locales" : {
     "en" : {
       "language" : "en"
+    },
+    "it_IT" : {
+      "language" : "it",
+      "country" : "IT"
     }
   }
 }
