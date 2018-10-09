@@ -1,18 +1,20 @@
-<!-- directive: wr-screen scr2 -->
+<!-- directive: wr-screen scr2d -->
 <div>
 	<ion-content class=" wr-safe-area">
-		<!-- directive: wr-component dau1 -->
+		<!-- directive: wr-component dau2d -->
 		<div class=" wr-comp-Details">
 			<div ng-if="view.data" class="list card">
+				<div class="item item-divider">{{ 'Question' | wrLocalize }}</div>
 				<div class="item ">
 					<h2>{{ view.data.content }}</h2>
 				</div>
 			</div>
 		</div>
-		<!-- end_directive: wr-component --><!-- directive: wr-component pwu1 -->
+		<!-- end_directive: wr-component --><!-- directive: wr-component pwu1d -->
 		<div class=" wr-comp-List">
 			<div ng-if="view.data &amp;&amp; view.data.length" class="list ">
-				<div class="item item-icon-right" ng-repeat="current in view.data" ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte2', { position: $index })">
+				<div class="item item-divider">{{ 'Answers' | wrLocalize }}</div>
+				<div class="item item-icon-right" ng-repeat="current in view.data" ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte5d', { position: $index })">
 					<h2>{{ current.content }}</h2>
 					<span class="icon ion-chevron-right"></span>
 				</div>

@@ -626,11 +626,23 @@ wrx.EmulatorSupport = (function() {
       "name" : "Results",
       "setNames" : [ ]
     },
+    "scr1d" : {
+      "name" : "Explanation",
+      "setNames" : [ ]
+    },
     "scr2" : {
       "name" : "Decode A Card",
       "setNames" : [ ]
     },
-    "scr1d" : {
+    "scr8d" : {
+      "name" : "Results",
+      "setNames" : [ ]
+    },
+    "scr9d" : {
+      "name" : "Single Player",
+      "setNames" : [ ]
+    },
+    "scr10d" : {
       "name" : "Explanation",
       "setNames" : [ ]
     }

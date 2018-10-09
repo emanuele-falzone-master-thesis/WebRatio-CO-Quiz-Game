@@ -1,25 +1,28 @@
-<!-- directive: wr-screen scr3 -->
+<!-- directive: wr-screen scr3d -->
 <div>
 	<ion-content class=" wr-safe-area">
-		<!-- directive: wr-component mssu1 -->
+		<!-- directive: wr-component mssu1d -->
 		<div class=" wr-comp-Message">
 			<div ng-if="view.messages &amp;&amp; view.messages.length" class="list ">
+				<div class="item item-divider">{{ 'Message' | wrLocalize }}</div>
 				<div ng-repeat="msg in view.messages track by $index" class="item item-text-wrap" ng-bind="msg"></div>
 			</div>
 		</div>
-		<!-- end_directive: wr-component --><!-- directive: wr-component mssu2 -->
+		<!-- end_directive: wr-component --><!-- directive: wr-component mssu2d -->
 		<div class=" wr-comp-Message">
 			<div ng-if="view.messages &amp;&amp; view.messages.length" class="list ">
+				<div class="item item-divider">{{ 'Image' | wrLocalize }}</div>
 				<div ng-repeat="msg in view.messages track by $index" class="item item-text-wrap" ng-bind="msg"></div>
 			</div>
 		</div>
-		<!-- end_directive: wr-component --><!-- directive: wr-component gctu2 -->
+		<!-- end_directive: wr-component --><!-- directive: wr-component gctu2d -->
 		<div class=" wr-comp-ViewComponent list">
+			<div class="item item-divider">{{ 'Actions' | wrLocalize }}</div>
 			<div class="item-buttons">    
-				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte3', { position: $index })">
+				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte6d', { position: $index })">
 				{{ 'Quit' | wrLocalize }}
 				</button>
-				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte1d', { position: $index })">
+				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte7d', { position: $index })">
 				{{ 'Explanation' | wrLocalize }}
 				</button>
 			</div>

@@ -47,19 +47,19 @@
 
 	var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
-	var _import = __webpack_require__(1);
+	var _import = __webpack_require__(6);
 
 	var mod0 = _interopRequireWildcard(_import);
 
-	var _import2 = __webpack_require__(2);
+	var _import2 = __webpack_require__(7);
 
 	var mod1 = _interopRequireWildcard(_import2);
 
-	var _import3 = __webpack_require__(3);
+	var _import3 = __webpack_require__(8);
 
 	var mod2 = _interopRequireWildcard(_import3);
 
-	var _import4 = __webpack_require__(4);
+	var _import4 = __webpack_require__(9);
 
 	var mod3 = _interopRequireWildcard(_import4);
 
@@ -67,19 +67,19 @@
 
 	var mod4 = _interopRequireWildcard(_import5);
 
-	var _import6 = __webpack_require__(5);
+	var _import6 = __webpack_require__(1);
 
 	var mod5 = _interopRequireWildcard(_import6);
 
-	var _import7 = __webpack_require__(6);
+	var _import7 = __webpack_require__(2);
 
 	var mod6 = _interopRequireWildcard(_import7);
 
-	var _import8 = __webpack_require__(7);
+	var _import8 = __webpack_require__(3);
 
 	var mod7 = _interopRequireWildcard(_import8);
 
-	var _import9 = __webpack_require__(8);
+	var _import9 = __webpack_require__(4);
 
 	var mod8 = _interopRequireWildcard(_import9);
 
@@ -87,7 +87,7 @@
 
 	var mod9 = _interopRequireWildcard(_import10);
 
-	var _import11 = __webpack_require__(9);
+	var _import11 = __webpack_require__(5);
 
 	var mod10 = _interopRequireWildcard(_import11);
 
@@ -115,522 +115,6 @@
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * Service for View Component view components.
-	 * 
-	 * @constructor
-	 * @extends wrm.core.AbstractCachedViewComponentService
-	 * @param {string} id
-	 * @param {!Object} descr
-	 * @param {!wrm.core.Manager} manager
-	 */
-	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
-
-	    /** @override */
-	    createResult: function (context) {
-	        return {};
-	    }
-
-	});
-	module.exports = exports.default;
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * Service for Message view components.
-	 * 
-	 * @constructor
-	 * @extends wrm.core.AbstractCachedViewComponentService
-	 * @param {string} id
-	 * @param {!Object} descr
-	 * @param {!wrm.core.Manager} manager
-	 */
-	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
-
-	    /** @override */
-	    initialize: function (descr) {
-
-	        /**
-	         * @private
-	         * @type {?string}
-	         */
-	        this._defaultMessage = descr["defaultMessage"] || null;
-
-	        /**
-	         * @private
-	         * @type {?Array}
-	         */
-	        this._placeholders = descr["placeholders"];
-	    },
-
-	    /** @override */
-	    createResult: function (context) {
-	        var input = context.getInput();
-
-	        /* Get messages from input, or use the default one */
-	        var messages = input["messages"];
-	        if (messages === undefined) {
-	            messages = this._defaultMessage;
-	        }
-
-	        /* Get placeholders values and replace in messages */
-	        var placeholder = {};
-	        for (placeholder in this._placeholders) {
-	            var value = "";
-	            placeholder = this._placeholders[placeholder];
-	            if (input[placeholder["name"]] !== undefined) {
-	                value = input[placeholder["name"]];
-	            }
-	            var exp = new RegExp("\\$\\$" + placeholder["label"] + "\\$\\$", "g");
-	            if (angular.isArray(messages)) {
-	                var message = null;
-	                for (message in messages) {
-	                    messages[message] = messages[message].replace(exp, value);
-	                }
-	            } else {
-	                messages = messages.replace(exp, value);
-	            }
-	        }
-
-	        return {
-	            "messages": wrm.data.toStringArray(messages)
-	        };
-	    } });
-	module.exports = exports.default;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * Service for Details view components.
-	 * 
-	 * @constructor
-	 * @extends wrm.core.AbstractCachedViewComponentService
-	 * @param {string} id
-	 * @param {!Object} descr
-	 * @param {!wrm.core.Manager} manager
-	 */
-	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
-
-	    /** @override */
-	    initialize: function (descr) {
-	        var thisService = this;
-
-	        /**
-	         * @private
-	         * @type {!string}
-	         */
-	        this._entityId = descr["entity"];
-
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._output; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._toBind; // init'd below
-
-	        // TODO cache query instead
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._condExpr; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!wrm.data.DataService}
-	         */
-	        this._dataService; // init'd below
-
-	        return this.getManager().getDataService().then(function (dataService) {
-	            thisService._dataService = dataService;
-	            thisService._condExpr = descr["condExprs"];
-	            var output = descr["output"];
-	            thisService._output = {};
-	            thisService._toBind = {};
-	            if (output.length !== 0) {
-	                output.forEach(function (column) {
-	                    thisService._output[column["viewName"]] = column["ref"];
-	                    thisService._toBind[column["viewName"]] = column["bindName"];
-	                });
-	            }
-	        });
-	    },
-
-	    /** @override */
-	    createResult: function (context) {
-	        var thisService = this;
-	        var input = context.getInput();
-
-	        var resultsPromise = this._dataService.execute(function (d) {
-	            var options = {
-	                output: thisService._output,
-	                outputConfig: {
-	                    useNames: true
-	                },
-	                filter: thisService._condExpr
-	            };
-	            return d.selectOne(thisService._entityId, options, input);
-	        });
-
-	        return resultsPromise.then(function (row) {
-	            return {
-	                "data": row
-	            };
-	        }, function (e) {
-	            thisService.getLog().error(e);
-	        });
-	    },
-
-	    /** @override */
-	    isStaleResult: function (context, result) {
-	        return !result["data"];
-	    },
-
-	    /** @override */
-	    computeOutputFromResult: function (context, result) {
-	        return this._createOutput(result["data"]);
-	    },
-
-	    /** @override */
-	    submitView: function (context) {
-	        return this._createOutput(context.getView()["data"]);
-	    },
-
-	    /**
-	     * @private
-	     * @param {!Object} data
-	     * @returns {!Object}
-	     */
-	    _createOutput: function (data) {
-	        var output = {};
-	        if (data === null) {
-	            output["dataSize"] = 0;
-	        } else {
-	            var toBind = this._toBind;
-	            var outputData = {};
-	            Object.keys(this._output).forEach(function (key) {
-	                outputData[toBind[key]] = data[key];
-	            });
-	            output["data"] = outputData;
-	            output["dataSize"] = 1;
-	        }
-	        return output;
-	    } });
-	module.exports = exports.default;
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * Service for List view components.
-	 * 
-	 * @constructor
-	 * @extends wrm.core.AbstractCachedViewComponentService
-	 * @param {string} id
-	 * @param {!Object} descr
-	 * @param {!wrm.core.Manager} manager
-	 */
-	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
-
-	    /** @override */
-	    initialize: function (descr) {
-	        var thisService = this;
-
-	        /**
-	         * @private
-	         * @type {!wrm.data.meta.Entity}
-	         */
-	        this._entity; // init'd below
-
-	        // TODO cache query instead
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._condExpr; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!boolean}
-	         */
-	        this._checkable = descr["checkable"] || false;
-
-	        /**
-	         * @private
-	         * @type {boolean}
-	         */
-	        this._hasPreCondExpr = descr["preCondExprs"] !== undefined ? true : false;
-
-	        // TODO cache query instead
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._preCondExpr; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!number}
-	         */
-	        this._maxResults = descr["maxResults"];
-
-	        /**
-	         * @private
-	         * @type {!boolean}
-	         */
-	        this._distinct = descr["distinct"] || false;
-
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._output; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!Object}
-	         */
-	        this._toBind; // init'd below
-
-	        /**
-	         * @private
-	         * @type {!Array}
-	         */
-	        this._order = descr["order"];
-
-	        /**
-	         * @private
-	         * @type {!wrm.data.DataService}
-	         */
-	        this._dataService; // init'd below
-
-	        return this.getManager().getDataService().then(function (dataService) {
-	            thisService._dataService = dataService;
-	            thisService._entity = dataService.getMetadata().getEntity(descr["entity"]);
-	            thisService._condExpr = descr["condExprs"];
-	            var keyAttr = thisService._entity.getKeyAttribute();
-	            var output = descr["output"];
-	            thisService._output = {};
-	            thisService._toBind = {};
-	            if (output.length !== 0) {
-	                output.forEach(function (column) {
-	                    thisService._output[column["viewName"]] = column["ref"];
-	                    thisService._toBind[column["viewName"]] = column["bindName"];
-	                });
-	            }
-	            if (!thisService._distinct) {
-	                thisService._output["__key"] = keyAttr.getId(); // for row tracking
-	            }
-
-	            if (thisService._checkable) {
-	                thisService._output[keyAttr.getName()] = keyAttr.getId();
-	                thisService._toBind[keyAttr.getName()] = keyAttr.getId();
-	                thisService._preCondExpr = descr["preCondExprs"];
-	            }
-	        });
-	    },
-
-	    /** @override */
-	    createResult: function (context) {
-	        var thisService = this;
-	        var input = context.getInput();
-
-	        var options = {
-	            output: this._output,
-	            outputConfig: {
-	                useNames: true
-	            },
-	            distinct: this._distinct,
-	            filter: this._condExpr,
-	            order: this._order
-	        };
-	        var resultsLength = input["maxResults"] || thisService._maxResults;
-	        if (resultsLength > 0) {
-	            var limit = {
-	                count: resultsLength
-	            };
-	            options["limit"] = limit;
-	        }
-
-	        var promises = [];
-
-	        promises.push(this._retrieveData(input, options));
-	        if (this._checkable) {
-	            var keyAttributeId = this._entity.getKeyAttribute().getId();
-	            if (!this._refreshCheckedObjects(context)) {
-	                var checkedObj = [];
-	                var checkedRows = context.getView()["checkedRows"];
-	                Object.keys(checkedRows).forEach(function (rowKey) {
-	                    if (checkedRows[rowKey]) {
-	                        checkedObj.push(rowKey);
-	                    }
-	                });
-	                promises.push(checkedObj);
-	            } else if (this._hasPreCondExpr) {
-	                var preCheckOptions = {
-	                    output: keyAttributeId,
-	                    outputConfig: {
-	                        useNames: true
-	                    },
-	                    filter: this._preCondExpr
-	                };
-	                promises.push(this._retrieveData(input, preCheckOptions));
-	            }
-	        }
-
-	        return Promise.all(promises).then(function (results) {
-	            var dataRows = results[0];
-	            var preChecked = results[1] || [];
-	            var checkedRows = {};
-
-	            thisService._markDataRows(dataRows, context);
-	            if (thisService._checkable) {
-	                preChecked.forEach(function (objKey) {
-	                    checkedRows[objKey] = true;
-	                });
-	            }
-
-	            return {
-	                "data": dataRows,
-	                "checkedRows": checkedRows
-	            };
-	        }, function (e) {
-	            thisService.getLog().error(e);
-	        });
-	    },
-
-	    /**
-	     * @private
-	     * @param {!wrm.nav.Input} input
-	     * @param {!Object=} options
-	     * @return {!Promise<!Array<!Object>>}
-	     */
-	    _retrieveData: function (input, options) {
-	        var thisService = this;
-	        return this._dataService.execute(function (d) {
-	            return d.select(thisService._entity.getId(), options, input);
-	        });
-	    },
-
-	    /**
-	     * @private
-	     * @param {!Array<!Object>} rows
-	     * @param {!wrm.core.ViewComponentContext} context
-	     */
-	    _markDataRows: function (rows, context) {
-	        if (!this._distinct) {
-	            rows.forEach(function (row) {
-	                context.markForViewTracking(row, row["__key"]);
-	                delete row["__key"];
-	            }, this);
-	        } else {
-	            rows.forEach(function (row, index) {
-	                context.markForViewTracking(row, index);
-	            }, this);
-	        }
-	    },
-
-	    /** @override */
-	    isStaleResult: function (context, result) {
-	        return !result["data"] || result["data"].length === 0;
-	    },
-
-	    /** @override */
-	    catchEvent: function (context, event) {
-	        var rowIndex = event.getParameters()["position"];
-	        var view = context.getView();
-	        view["current"] = rowIndex;
-	    },
-
-	    /** @override */
-	    computeOutputFromResult: function (context, result) {
-	        return this._createOutput(result);
-	    },
-
-	    /** @override */
-	    submitView: function (context) {
-	        var view = context.getView();
-	        return this._createOutput(view);
-	    },
-
-	    /**
-	     * @param {!Object} view
-	     * @return {!Object}
-	     */
-	    _createOutput: function (view) {
-	        var output = {};
-	        var data = view["data"];
-	        var current = view["current"] || 0;
-	        var dataSize = data.length;
-	        if (dataSize > 0) {
-	            if (current === dataSize) {
-	                current--;
-	            }
-	            if (this._checkable) {
-	                output["checkedKeys"] = [];
-	                var checkedRows = view["checkedRows"];
-	                Object.keys(checkedRows).forEach(function (row) {
-	                    if (checkedRows[row] == true) {
-	                        output["checkedKeys"].push(row);
-	                    }
-	                });
-	            }
-
-	            var toBind = this._toBind;
-	            var currentRow = data[current];
-	            var outputData = {};
-	            Object.keys(this._output).forEach(function (key) {
-	                outputData[toBind[key]] = currentRow[key];
-	            });
-
-	            output["data"] = outputData;
-	        }
-	        output["dataSize"] = dataSize;
-	        return output;
-	    },
-
-	    /**
-	     * @private
-	     * @param {!wrm.core.ViewComponentContext} context
-	     * @return {boolean}
-	     */
-	    _refreshCheckedObjects: function (context) {
-	        var RefreshMode = wrm.core.RefreshMode;
-	        var refreshMode = context.getFormRefreshMode();
-	        if (refreshMode === RefreshMode.PRESERVE) {
-	            return false;
-	        } else {
-	            return true;
-	        }
-	    } });
-	module.exports = exports.default;
-
-/***/ },
-/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
@@ -723,7 +207,7 @@
 	/** @type {string} */
 
 /***/ },
-/* 6 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
@@ -879,7 +363,7 @@
 	module.exports = exports.default;
 
 /***/ },
-/* 7 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
@@ -950,7 +434,7 @@
 	module.exports = exports.default;
 
 /***/ },
-/* 8 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
@@ -1229,7 +713,7 @@
 	module.exports = exports.default;
 
 /***/ },
-/* 9 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
@@ -1796,6 +1280,522 @@
 	};
 	module.exports = exports.default;
 	/** @type {!Object} */
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Service for View Component view components.
+	 * 
+	 * @constructor
+	 * @extends wrm.core.AbstractCachedViewComponentService
+	 * @param {string} id
+	 * @param {!Object} descr
+	 * @param {!wrm.core.Manager} manager
+	 */
+	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
+
+	    /** @override */
+	    createResult: function (context) {
+	        return {};
+	    }
+
+	});
+	module.exports = exports.default;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Service for Message view components.
+	 * 
+	 * @constructor
+	 * @extends wrm.core.AbstractCachedViewComponentService
+	 * @param {string} id
+	 * @param {!Object} descr
+	 * @param {!wrm.core.Manager} manager
+	 */
+	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
+
+	    /** @override */
+	    initialize: function (descr) {
+
+	        /**
+	         * @private
+	         * @type {?string}
+	         */
+	        this._defaultMessage = descr["defaultMessage"] || null;
+
+	        /**
+	         * @private
+	         * @type {?Array}
+	         */
+	        this._placeholders = descr["placeholders"];
+	    },
+
+	    /** @override */
+	    createResult: function (context) {
+	        var input = context.getInput();
+
+	        /* Get messages from input, or use the default one */
+	        var messages = input["messages"];
+	        if (messages === undefined) {
+	            messages = this._defaultMessage;
+	        }
+
+	        /* Get placeholders values and replace in messages */
+	        var placeholder = {};
+	        for (placeholder in this._placeholders) {
+	            var value = "";
+	            placeholder = this._placeholders[placeholder];
+	            if (input[placeholder["name"]] !== undefined) {
+	                value = input[placeholder["name"]];
+	            }
+	            var exp = new RegExp("\\$\\$" + placeholder["label"] + "\\$\\$", "g");
+	            if (angular.isArray(messages)) {
+	                var message = null;
+	                for (message in messages) {
+	                    messages[message] = messages[message].replace(exp, value);
+	                }
+	            } else {
+	                messages = messages.replace(exp, value);
+	            }
+	        }
+
+	        return {
+	            "messages": wrm.data.toStringArray(messages)
+	        };
+	    } });
+	module.exports = exports.default;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Service for Details view components.
+	 * 
+	 * @constructor
+	 * @extends wrm.core.AbstractCachedViewComponentService
+	 * @param {string} id
+	 * @param {!Object} descr
+	 * @param {!wrm.core.Manager} manager
+	 */
+	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
+
+	    /** @override */
+	    initialize: function (descr) {
+	        var thisService = this;
+
+	        /**
+	         * @private
+	         * @type {!string}
+	         */
+	        this._entityId = descr["entity"];
+
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._output; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._toBind; // init'd below
+
+	        // TODO cache query instead
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._condExpr; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!wrm.data.DataService}
+	         */
+	        this._dataService; // init'd below
+
+	        return this.getManager().getDataService().then(function (dataService) {
+	            thisService._dataService = dataService;
+	            thisService._condExpr = descr["condExprs"];
+	            var output = descr["output"];
+	            thisService._output = {};
+	            thisService._toBind = {};
+	            if (output.length !== 0) {
+	                output.forEach(function (column) {
+	                    thisService._output[column["viewName"]] = column["ref"];
+	                    thisService._toBind[column["viewName"]] = column["bindName"];
+	                });
+	            }
+	        });
+	    },
+
+	    /** @override */
+	    createResult: function (context) {
+	        var thisService = this;
+	        var input = context.getInput();
+
+	        var resultsPromise = this._dataService.execute(function (d) {
+	            var options = {
+	                output: thisService._output,
+	                outputConfig: {
+	                    useNames: true
+	                },
+	                filter: thisService._condExpr
+	            };
+	            return d.selectOne(thisService._entityId, options, input);
+	        });
+
+	        return resultsPromise.then(function (row) {
+	            return {
+	                "data": row
+	            };
+	        }, function (e) {
+	            thisService.getLog().error(e);
+	        });
+	    },
+
+	    /** @override */
+	    isStaleResult: function (context, result) {
+	        return !result["data"];
+	    },
+
+	    /** @override */
+	    computeOutputFromResult: function (context, result) {
+	        return this._createOutput(result["data"]);
+	    },
+
+	    /** @override */
+	    submitView: function (context) {
+	        return this._createOutput(context.getView()["data"]);
+	    },
+
+	    /**
+	     * @private
+	     * @param {!Object} data
+	     * @returns {!Object}
+	     */
+	    _createOutput: function (data) {
+	        var output = {};
+	        if (data === null) {
+	            output["dataSize"] = 0;
+	        } else {
+	            var toBind = this._toBind;
+	            var outputData = {};
+	            Object.keys(this._output).forEach(function (key) {
+	                outputData[toBind[key]] = data[key];
+	            });
+	            output["data"] = outputData;
+	            output["dataSize"] = 1;
+	        }
+	        return output;
+	    } });
+	module.exports = exports.default;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Service for List view components.
+	 * 
+	 * @constructor
+	 * @extends wrm.core.AbstractCachedViewComponentService
+	 * @param {string} id
+	 * @param {!Object} descr
+	 * @param {!wrm.core.Manager} manager
+	 */
+	exports.default = wrm.defineService(wrm.core.AbstractCachedViewComponentService, {
+
+	    /** @override */
+	    initialize: function (descr) {
+	        var thisService = this;
+
+	        /**
+	         * @private
+	         * @type {!wrm.data.meta.Entity}
+	         */
+	        this._entity; // init'd below
+
+	        // TODO cache query instead
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._condExpr; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!boolean}
+	         */
+	        this._checkable = descr["checkable"] || false;
+
+	        /**
+	         * @private
+	         * @type {boolean}
+	         */
+	        this._hasPreCondExpr = descr["preCondExprs"] !== undefined ? true : false;
+
+	        // TODO cache query instead
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._preCondExpr; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!number}
+	         */
+	        this._maxResults = descr["maxResults"];
+
+	        /**
+	         * @private
+	         * @type {!boolean}
+	         */
+	        this._distinct = descr["distinct"] || false;
+
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._output; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!Object}
+	         */
+	        this._toBind; // init'd below
+
+	        /**
+	         * @private
+	         * @type {!Array}
+	         */
+	        this._order = descr["order"];
+
+	        /**
+	         * @private
+	         * @type {!wrm.data.DataService}
+	         */
+	        this._dataService; // init'd below
+
+	        return this.getManager().getDataService().then(function (dataService) {
+	            thisService._dataService = dataService;
+	            thisService._entity = dataService.getMetadata().getEntity(descr["entity"]);
+	            thisService._condExpr = descr["condExprs"];
+	            var keyAttr = thisService._entity.getKeyAttribute();
+	            var output = descr["output"];
+	            thisService._output = {};
+	            thisService._toBind = {};
+	            if (output.length !== 0) {
+	                output.forEach(function (column) {
+	                    thisService._output[column["viewName"]] = column["ref"];
+	                    thisService._toBind[column["viewName"]] = column["bindName"];
+	                });
+	            }
+	            if (!thisService._distinct) {
+	                thisService._output["__key"] = keyAttr.getId(); // for row tracking
+	            }
+
+	            if (thisService._checkable) {
+	                thisService._output[keyAttr.getName()] = keyAttr.getId();
+	                thisService._toBind[keyAttr.getName()] = keyAttr.getId();
+	                thisService._preCondExpr = descr["preCondExprs"];
+	            }
+	        });
+	    },
+
+	    /** @override */
+	    createResult: function (context) {
+	        var thisService = this;
+	        var input = context.getInput();
+
+	        var options = {
+	            output: this._output,
+	            outputConfig: {
+	                useNames: true
+	            },
+	            distinct: this._distinct,
+	            filter: this._condExpr,
+	            order: this._order
+	        };
+	        var resultsLength = input["maxResults"] || thisService._maxResults;
+	        if (resultsLength > 0) {
+	            var limit = {
+	                count: resultsLength
+	            };
+	            options["limit"] = limit;
+	        }
+
+	        var promises = [];
+
+	        promises.push(this._retrieveData(input, options));
+	        if (this._checkable) {
+	            var keyAttributeId = this._entity.getKeyAttribute().getId();
+	            if (!this._refreshCheckedObjects(context)) {
+	                var checkedObj = [];
+	                var checkedRows = context.getView()["checkedRows"];
+	                Object.keys(checkedRows).forEach(function (rowKey) {
+	                    if (checkedRows[rowKey]) {
+	                        checkedObj.push(rowKey);
+	                    }
+	                });
+	                promises.push(checkedObj);
+	            } else if (this._hasPreCondExpr) {
+	                var preCheckOptions = {
+	                    output: keyAttributeId,
+	                    outputConfig: {
+	                        useNames: true
+	                    },
+	                    filter: this._preCondExpr
+	                };
+	                promises.push(this._retrieveData(input, preCheckOptions));
+	            }
+	        }
+
+	        return Promise.all(promises).then(function (results) {
+	            var dataRows = results[0];
+	            var preChecked = results[1] || [];
+	            var checkedRows = {};
+
+	            thisService._markDataRows(dataRows, context);
+	            if (thisService._checkable) {
+	                preChecked.forEach(function (objKey) {
+	                    checkedRows[objKey] = true;
+	                });
+	            }
+
+	            return {
+	                "data": dataRows,
+	                "checkedRows": checkedRows
+	            };
+	        }, function (e) {
+	            thisService.getLog().error(e);
+	        });
+	    },
+
+	    /**
+	     * @private
+	     * @param {!wrm.nav.Input} input
+	     * @param {!Object=} options
+	     * @return {!Promise<!Array<!Object>>}
+	     */
+	    _retrieveData: function (input, options) {
+	        var thisService = this;
+	        return this._dataService.execute(function (d) {
+	            return d.select(thisService._entity.getId(), options, input);
+	        });
+	    },
+
+	    /**
+	     * @private
+	     * @param {!Array<!Object>} rows
+	     * @param {!wrm.core.ViewComponentContext} context
+	     */
+	    _markDataRows: function (rows, context) {
+	        if (!this._distinct) {
+	            rows.forEach(function (row) {
+	                context.markForViewTracking(row, row["__key"]);
+	                delete row["__key"];
+	            }, this);
+	        } else {
+	            rows.forEach(function (row, index) {
+	                context.markForViewTracking(row, index);
+	            }, this);
+	        }
+	    },
+
+	    /** @override */
+	    isStaleResult: function (context, result) {
+	        return !result["data"] || result["data"].length === 0;
+	    },
+
+	    /** @override */
+	    catchEvent: function (context, event) {
+	        var rowIndex = event.getParameters()["position"];
+	        var view = context.getView();
+	        view["current"] = rowIndex;
+	    },
+
+	    /** @override */
+	    computeOutputFromResult: function (context, result) {
+	        return this._createOutput(result);
+	    },
+
+	    /** @override */
+	    submitView: function (context) {
+	        var view = context.getView();
+	        return this._createOutput(view);
+	    },
+
+	    /**
+	     * @param {!Object} view
+	     * @return {!Object}
+	     */
+	    _createOutput: function (view) {
+	        var output = {};
+	        var data = view["data"];
+	        var current = view["current"] || 0;
+	        var dataSize = data.length;
+	        if (dataSize > 0) {
+	            if (current === dataSize) {
+	                current--;
+	            }
+	            if (this._checkable) {
+	                output["checkedKeys"] = [];
+	                var checkedRows = view["checkedRows"];
+	                Object.keys(checkedRows).forEach(function (row) {
+	                    if (checkedRows[row] == true) {
+	                        output["checkedKeys"].push(row);
+	                    }
+	                });
+	            }
+
+	            var toBind = this._toBind;
+	            var currentRow = data[current];
+	            var outputData = {};
+	            Object.keys(this._output).forEach(function (key) {
+	                outputData[toBind[key]] = currentRow[key];
+	            });
+
+	            output["data"] = outputData;
+	        }
+	        output["dataSize"] = dataSize;
+	        return output;
+	    },
+
+	    /**
+	     * @private
+	     * @param {!wrm.core.ViewComponentContext} context
+	     * @return {boolean}
+	     */
+	    _refreshCheckedObjects: function (context) {
+	        var RefreshMode = wrm.core.RefreshMode;
+	        var refreshMode = context.getFormRefreshMode();
+	        if (refreshMode === RefreshMode.PRESERVE) {
+	            return false;
+	        } else {
+	            return true;
+	        }
+	    } });
+	module.exports = exports.default;
 
 /***/ },
 /* 10 */

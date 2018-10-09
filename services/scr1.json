@@ -30,31 +30,88 @@
       "flows" : "nf2d"
     },
     "7" : {
-      "flows" : "nf3d",
+      "flows" : "nf30d",
       "fr" : true
     },
     "8" : {
-      "flows" : "nf3d"
+      "flows" : "nf30d"
     },
     "9" : {
-      "flows" : "nf4",
+      "flows" : "nf31d",
       "fr" : true
     },
     "10" : {
-      "flows" : "nf4"
+      "flows" : "nf31d"
     },
     "11" : {
-      "flows" : "nf8",
+      "flows" : "nf32d",
       "fr" : true
     },
     "12" : {
-      "flows" : "nf8"
+      "flows" : "nf32d"
     },
     "13" : {
-      "flows" : "nf9",
+      "flows" : "nf33d",
       "fr" : true
     },
     "14" : {
+      "flows" : "nf33d"
+    },
+    "15" : {
+      "flows" : "nf34d",
+      "fr" : true
+    },
+    "16" : {
+      "flows" : "nf34d"
+    },
+    "17" : {
+      "flows" : "nf35d|nf6d",
+      "fr" : true,
+      "effects" : "#pr#"
+    },
+    "18" : {
+      "flows" : "nf35d|nf6d",
+      "effects" : "#pr#"
+    },
+    "19" : {
+      "flows" : "nf36d|nf6d",
+      "fr" : true,
+      "effects" : "#pr#"
+    },
+    "20" : {
+      "flows" : "nf36d|nf6d",
+      "effects" : "#pr#"
+    },
+    "21" : {
+      "flows" : "nf3d",
+      "fr" : true
+    },
+    "22" : {
+      "flows" : "nf3d"
+    },
+    "23" : {
+      "flows" : "nf4",
+      "fr" : true
+    },
+    "24" : {
+      "flows" : "nf4"
+    },
+    "25" : {
+      "flows" : "nf4d|nf6d",
+      "effects" : "#pr#"
+    },
+    "26" : {
+      "flows" : "nf8",
+      "fr" : true
+    },
+    "27" : {
+      "flows" : "nf8"
+    },
+    "28" : {
+      "flows" : "nf9",
+      "fr" : true
+    },
+    "29" : {
       "flows" : "nf9"
     }
   },
@@ -66,11 +123,11 @@
       "fb" : false,
       "conds" : [ {
         "fr" : false,
-        "navs" : "3|4",
+        "navs" : "25|3|4|18|20",
         "effects" : "#pr#"
       }, {
         "fr" : false,
-        "navs" : "4",
+        "navs" : "25|4|18|20",
         "effects" : "-"
       } ]
     }
@@ -83,6 +140,16 @@
         "id" : "nf1",
         "navTo" : "act1",
         "bindTo" : "act1",
+        "preserve" : ""
+      }
+    },
+    "oslte3d" : {
+      "component" : "gctu1",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf4d",
+        "navTo" : "act1d",
+        "bindTo" : "act1d",
         "preserve" : ""
       }
     }

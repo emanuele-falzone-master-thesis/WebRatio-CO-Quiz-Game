@@ -1,0 +1,81 @@
+{
+  "_" : "wrm.core.PanelService",
+  "navigations" : {
+    "0" : {
+      "nc" : true,
+      "flows" : "scr4d",
+      "fr" : true
+    },
+    "1" : {
+      "nc" : true,
+      "flows" : "scr4d.link",
+      "fr" : true
+    },
+    "2" : {
+      "flows" : "scr4d.auto-link",
+      "fr" : true
+    },
+    "3" : {
+      "flows" : "scr4d.auto-link"
+    },
+    "4" : {
+      "flows" : "nf13d",
+      "fr" : true
+    },
+    "5" : {
+      "flows" : "nf13d"
+    }
+  },
+  "knownEffects" : "#pr#",
+  "propagationSequence" : "",
+  "propagations" : { },
+  "components" : {
+    "dau3d" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "navs" : "5",
+        "effects" : "-"
+      }, {
+        "fr" : false,
+        "effects" : "#pr#"
+      } ]
+    },
+    "gctu3d" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "navs" : "3",
+        "effects" : "#pr#"
+      } ]
+    }
+  },
+  "events" : {
+    "oslte8d" : {
+      "component" : "gctu3d",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf14d",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : ""
+      }
+    },
+    "bke4d" : {
+      "generic" : true,
+      "type" : "BackEvent",
+      "flow" : {
+        "id" : "nf15d",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : ""
+      }
+    }
+  },
+  "autoFlow" : {
+    "preserve" : "dau3d:kcond3d.att4"
+  },
+  "autoFlowFull" : {
+    "preserve" : "dau3d:kcond3d.att4"
+  }
+}

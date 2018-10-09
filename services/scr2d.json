@@ -3,42 +3,42 @@
   "navigations" : {
     "0" : {
       "nc" : true,
-      "flows" : "scr2",
+      "flows" : "scr2d",
       "fr" : true
     },
     "1" : {
       "nc" : true,
-      "flows" : "scr2.link",
+      "flows" : "scr2d.link",
       "fr" : true
     },
     "2" : {
-      "flows" : "scr2.auto-link",
+      "flows" : "scr2d.auto-link",
       "fr" : true
     },
     "3" : {
-      "flows" : "scr2.auto-link"
+      "flows" : "scr2d.auto-link"
     },
     "4" : {
-      "flows" : "nf1|nf2",
+      "flows" : "nf4d|nf5d",
       "fr" : true
     },
     "5" : {
-      "flows" : "nf1|nf2"
+      "flows" : "nf4d|nf5d"
     }
   },
   "knownEffects" : "#pr#",
-  "propagationSequence" : "df2d",
+  "propagationSequence" : "df9d",
   "propagations" : {
-    "df2d" : {
-      "bindTo" : "act3",
-      "bindFrom" : "dau1",
+    "df9d" : {
+      "bindTo" : "act2d",
+      "bindFrom" : "dau2d",
       "pass" : {
-        "par2d" : "data.att4"
+        "par12d" : "data.att4"
       }
     }
   },
   "components" : {
-    "dau1" : {
+    "dau2d" : {
       "fb" : false,
       "conds" : [ {
         "fr" : false,
@@ -49,7 +49,7 @@
         "effects" : "#pr#"
       } ]
     },
-    "pwu1" : {
+    "pwu1d" : {
       "fb" : true,
       "conds" : [ {
         "fr" : false,
@@ -63,11 +63,11 @@
         "all" : true,
         "fr" : true,
         "navs" : "4",
-        "inputs" : "pwu1:acond2"
+        "inputs" : "pwu1d:acond1d"
       }, {
         "all" : true,
         "navs" : "5",
-        "inputs" : "pwu1:acond2"
+        "inputs" : "pwu1d:acond1d"
       }, {
         "all" : true,
         "fr" : true,
@@ -76,25 +76,25 @@
     }
   },
   "events" : {
-    "oslte2" : {
-      "component" : "pwu1",
+    "oslte5d" : {
+      "component" : "pwu1d",
       "type" : "OnSelectEvent",
       "flow" : {
-        "id" : "nf5",
-        "navTo" : "act3",
-        "bindTo" : "act3",
-        "preserve" : "par2d",
+        "id" : "nf7d",
+        "navTo" : "act2d",
+        "bindTo" : "act2d",
+        "preserve" : "par12d",
         "bind" : {
-          "act3.pdp7" : "data.att13"
+          "act2d.pdp7" : "data.att13"
         }
       },
-      "secondaryFlows" : "df2d"
+      "secondaryFlows" : "df9d"
     },
-    "bke2" : {
+    "bke2d" : {
       "generic" : true,
       "type" : "BackEvent",
       "flow" : {
-        "id" : "nf4",
+        "id" : "nf10d",
         "navTo" : "scr1",
         "bindTo" : "scr1",
         "preserve" : ""
@@ -102,9 +102,9 @@
     }
   },
   "autoFlow" : {
-    "preserve" : "pwu1:acond2|dau1:kcond2.att4"
+    "preserve" : "dau2d:kcond2d.att4|pwu1d:acond1d"
   },
   "autoFlowFull" : {
-    "preserve" : "pwu1:acond2|dau1:kcond2.att4"
+    "preserve" : "dau2d:kcond2d.att4|pwu1d:acond1d"
   }
 }

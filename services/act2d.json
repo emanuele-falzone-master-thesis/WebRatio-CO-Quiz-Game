@@ -1,0 +1,57 @@
+{
+  "_" : "wrm.core.ActionService",
+  "definition" : "ad4",
+  "flows" : {
+    "spd4" : {
+      "id" : "nf8d",
+      "navTo" : "scr3d",
+      "bindTo" : "mssu1d",
+      "bind" : {
+        "messages" : {
+          "k" : "Great! Your answer is CORRECT!"
+        }
+      }
+    },
+    "spd4*" : [ {
+      "bindTo" : "mssu2d",
+      "bind" : {
+        "messages" : {
+          "k" : "boy-correct.png"
+        }
+      }
+    }, {
+      "bindTo" : "gctu2d",
+      "pass" : {
+        "par14d" : {
+          "p" : "par12d"
+        }
+      }
+    } ],
+    "epd4" : {
+      "id" : "nf9d",
+      "navTo" : "scr3d",
+      "bindTo" : "mssu1d",
+      "bind" : {
+        "messages" : {
+          "k" : "Oh no! Your answer is WRONG!"
+        }
+      }
+    },
+    "epd4*" : [ {
+      "bindTo" : "mssu2d",
+      "bind" : {
+        "messages" : {
+          "k" : "boy-wrong.png"
+        }
+      }
+    }, {
+      "bindTo" : "gctu2d",
+      "pass" : {
+        "par13d" : {
+          "p" : "par12d"
+        }
+      }
+    } ]
+  },
+  "notifications" : { }
+}

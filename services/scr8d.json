@@ -1,0 +1,124 @@
+{
+  "_" : "wrm.core.PanelService",
+  "navigations" : {
+    "0" : {
+      "nc" : true,
+      "flows" : "scr8d",
+      "fr" : true
+    },
+    "1" : {
+      "nc" : true,
+      "flows" : "scr8d.link",
+      "fr" : true
+    },
+    "2" : {
+      "flows" : "scr8d.auto-link",
+      "fr" : true
+    },
+    "3" : {
+      "flows" : "scr8d.auto-link"
+    },
+    "4" : {
+      "flows" : "nf26d|nf27d",
+      "fr" : true
+    },
+    "5" : {
+      "flows" : "nf26d|nf27d"
+    },
+    "6" : {
+      "flows" : "nf26d|nf28d",
+      "fr" : true
+    },
+    "7" : {
+      "flows" : "nf26d|nf28d"
+    }
+  },
+  "knownEffects" : "#pr#",
+  "propagationSequence" : "",
+  "propagations" : { },
+  "components" : {
+    "mssu5d" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "effects" : "#pr#"
+      }, {
+        "fr" : false,
+        "navs" : "5|7",
+        "effects" : "-"
+      } ]
+    },
+    "gctu6d" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "navs" : "3",
+        "effects" : "#pr#"
+      } ]
+    },
+    "mssu6d" : {
+      "fb" : false,
+      "conds" : [ {
+        "fr" : false,
+        "effects" : "#pr#"
+      }, {
+        "fr" : false,
+        "navs" : "5|7",
+        "effects" : "-"
+      } ]
+    }
+  },
+  "events" : {
+    "oslte9d" : {
+      "component" : "gctu6d",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf25d",
+        "navTo" : "scr10d",
+        "bindTo" : "dau7d",
+        "preserve" : "par31d|par34d",
+        "bind" : {
+          "kcond7d.att4" : {
+            "p" : "par31d"
+          }
+        }
+      }
+    },
+    "oslte12d" : {
+      "component" : "gctu6d",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf33d",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : "par31d|par34d"
+      }
+    },
+    "oslte14d" : {
+      "component" : "gctu6d",
+      "type" : "OnSelectEvent",
+      "flow" : {
+        "id" : "nf35d",
+        "navTo" : "act1d",
+        "bindTo" : "act1d",
+        "preserve" : "par31d|par34d"
+      }
+    },
+    "bke11d" : {
+      "generic" : true,
+      "type" : "BackEvent",
+      "flow" : {
+        "id" : "nf32d",
+        "navTo" : "scr1",
+        "bindTo" : "scr1",
+        "preserve" : ""
+      }
+    }
+  },
+  "autoFlow" : {
+    "preserve" : "mssu6d:messages|mssu5d:messages"
+  },
+  "autoFlowFull" : {
+    "preserve" : "mssu6d:messages|mssu5d:messages"
+  }
+}
