@@ -1,6 +1,6 @@
 <!-- directive: wr-screen scr2d -->
-<div>
-	<ion-content class=" wr-safe-area">
+<div class="settings">
+	<ion-content class="padded wr-safe-area">
 		<!-- directive: wr-component enu1d -->
 		<form class=" wr-comp-Form list ">
 			<label class="item item-input item-select" ng-class="{ 'has-errors' : view.formState.sfld1d.invalid }">
@@ -9,7 +9,6 @@
 				</span>
 				<div class="wr-input-wrapper">
 					<select ng-model="view.form.sfld1d" wr-form-property ng-options="opt as opt.label for opt in view.options.sfld1d">
-						<option value="">No selection</option>
 					</select>
 					<ul class="wr-error-list" ng-if="view.formState.sfld1d.errors.length">
 						<li ng-repeat="error in view.formState.sfld1d.errors track by $index">
@@ -19,7 +18,7 @@
 				</div>
 			</label>
 			<div class="item-buttons">    
-				<button type="button" class="button " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte5d', { position: $index })">
+				<button type="button" class="button quit entire " ng-click="screen.throwEvent($event, 'OnSelectEvent', 'oslte5d', { position: $index })">
 				{{ 'Save' | wrLocalize }}
 				</button>
 			</div>
