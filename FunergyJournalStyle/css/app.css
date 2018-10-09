@@ -22,6 +22,7 @@
     background-color: #e2ecbb;
     color: #588f3e;
     border-color: white;
+    margin-top: 3%;
 }
 
 .question {
@@ -91,7 +92,13 @@
     text-align: center;
 }
 
-.message > div {
+.message2 {
+    height: 20%;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.message > div, .message2 > div {
     height: 100%;
     line-height: 90px;
     border-radius: 10px 10px 0px 0px;
@@ -99,7 +106,7 @@
     border: 0;
 }
 
-.message > div div {
+.message > div div, .message2 > div div {
     background-color: transparent;
     border: 0;
     height: 100%;
@@ -113,7 +120,16 @@
     padding: 5%;
 }
 
+.button-quit2 {
+    height: 30%;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    background-color: beige;
+    padding: 5%;
+}
+
 .quit {
+    margin-top: 3%; 
     background-color:  #588f3e;
     color: white;
 }
